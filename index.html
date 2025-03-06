@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Romantic Animated Text</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(to bottom, #222, #000);
+            color: white;
+            font-family: 'Courier New', Courier, monospace;
+            overflow: hidden;
+            position: relative;
+            padding-top: 12vh;
+            text-align: center;
+        }
+        .container {
+            position: relative;
+            z-index: 2;
+            width: 90%;
+        }
+        .text {
+            font-size: 1.8em;
+            font-weight: bold;
+            opacity: 0;
+            transform: translateY(40px);
+            animation: fadeInUp 2s ease-out forwards;
+        }
+        .text:nth-child(1) { animation-delay: 0.5s; }
+        .text:nth-child(2) { animation-delay: 1s; }
+        .text:nth-child(3) { animation-delay: 1.5s; }
+        .text:nth-child(4) { animation-delay: 2s; }
+        .text:nth-child(5) { animation-delay: 2.5s; }
+        .text:nth-child(6) { animation-delay: 3s; }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .heart {
+            position: absolute;
+            font-size: 1.2em;
+            opacity: 0.8;
+            animation: floatUp 5s linear infinite;
+            z-index: 1;
+        }
+        @keyframes floatUp {
+            from {
+                transform: translateY(100vh) scale(0.6);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(-150vh) scale(1.2);
+                opacity: 1;
+            }
+        }
+        .photo-container {
+            position: absolute;
+            bottom: -200px;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            overflow: hidden;
+            animation: photoAppear 3s ease-out forwards 1s;
+            box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.6);
+        }
+        .photo-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        @keyframes photoAppear {
+            from {
+                bottom: -200px;
+                opacity: 0;
+            }
+            to {
+                bottom: 60px;
+                opacity: 1;
+            }
+        }
+
+        /* Responsif untuk HP */
+        @media (max-width: 600px) {
+            body {
+                padding-top: 7vh;
+            }
+            .text {
+                font-size: 1.4em;
+                padding: 5px;
+            }
+            .photo-container {
+                width: 100px;
+                height: 100px;
+                bottom: 50px;
+            }
+            .heart {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="text">Aku Cinta Kamu, Risma ❤️</div>
+        <div class="text">Kamu Segalanya Bagiku 💫</div>
+        <div class="text">Jantungku Berdetak Demi Kamu 💖</div>
+        <div class="text">Kamu Selamanya Bagiku 🌹</div>
+        <div class="text">Setiap Momen Bersamamu Adalah Kebahagiaan ✨</div>
+        <div class="text">Aku Akan Selalu Mencintaimu 💕</div>
+    </div>
+    <div class="photo-container">
+        <img src="jeje.jpeg" alt="Your Photo">
+    </div>
+    <script>
+        function createHeart() {
+            for (let i = 0; i < 3; i++) { // Mengurangi jumlah heart agar lebih rapi di layar kecil
+                const heart = document.createElement('div');
+                heart.classList.add('heart');
+                const colors = ['❤️', '💖', '💜', '💛', '💙', '💚'];
+                heart.innerHTML = colors[Math.floor(Math.random() * colors.length)];
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDuration = (Math.random() * 2 + 4) + 's';
+                heart.style.fontSize = Math.random() * 1.8 + 0.8 + 'em';
+                heart.style.opacity = Math.random() * 0.7 + 0.3;
+                document.body.appendChild(heart);
+                setTimeout(() => {
+                    heart.remove();
+                }, 5000);
+            }
+        }
+        setInterval(createHeart, 150); // Menyeimbangkan jumlah love agar tidak berlebihan
+    </script>
+</body>
+</html>
