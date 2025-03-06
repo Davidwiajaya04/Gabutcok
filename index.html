@@ -16,7 +16,7 @@
             font-family: 'Courier New', Courier, monospace;
             overflow: hidden;
             position: relative;
-            padding-top: 12vh;
+            padding-top: 10vh;
             text-align: center;
         }
         .container {
@@ -25,10 +25,10 @@
             width: 90%;
         }
         .text {
-            font-size: 1.8em;
+            font-size: 1.4em;
             font-weight: bold;
             opacity: 0;
-            transform: translateY(40px);
+            transform: translateY(30px);
             animation: fadeInUp 2s ease-out forwards;
         }
         .text:nth-child(1) { animation-delay: 0.5s; }
@@ -41,7 +41,7 @@
         @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(40px);
+                transform: translateY(30px);
             }
             to {
                 opacity: 1;
@@ -50,7 +50,7 @@
         }
         .heart {
             position: absolute;
-            font-size: 1.2em;
+            font-size: 1em;
             opacity: 0.8;
             animation: floatUp 5s linear infinite;
             z-index: 1;
@@ -67,13 +67,13 @@
         }
         .photo-container {
             position: absolute;
-            bottom: -200px;
-            width: 120px;
-            height: 120px;
+            bottom: 80px;
+            width: 100px;
+            height: 100px;
             border-radius: 50%;
             overflow: hidden;
             animation: photoAppear 3s ease-out forwards 1s;
-            box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.6);
+            box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.6);
         }
         .photo-container img {
             width: 100%;
@@ -86,7 +86,7 @@
                 opacity: 0;
             }
             to {
-                bottom: 60px;
+                bottom: 80px;
                 opacity: 1;
             }
         }
@@ -94,19 +94,19 @@
         /* Responsif untuk HP */
         @media (max-width: 600px) {
             body {
-                padding-top: 7vh;
+                padding-top: 5vh;
             }
             .text {
-                font-size: 1.4em;
+                font-size: 1.2em;
                 padding: 5px;
             }
             .photo-container {
-                width: 100px;
-                height: 100px;
-                bottom: 50px;
+                width: 90px;
+                height: 90px;
+                bottom: 70px;
             }
             .heart {
-                font-size: 1em;
+                font-size: 0.8em;
             }
         }
     </style>
@@ -125,14 +125,14 @@
     </div>
     <script>
         function createHeart() {
-            for (let i = 0; i < 3; i++) { // Mengurangi jumlah heart agar lebih rapi di layar kecil
+            for (let i = 0; i < 2; i++) { 
                 const heart = document.createElement('div');
                 heart.classList.add('heart');
                 const colors = ['❤️', '💖', '💜', '💛', '💙', '💚'];
                 heart.innerHTML = colors[Math.floor(Math.random() * colors.length)];
                 heart.style.left = Math.random() * 100 + 'vw';
                 heart.style.animationDuration = (Math.random() * 2 + 4) + 's';
-                heart.style.fontSize = Math.random() * 1.8 + 0.8 + 'em';
+                heart.style.fontSize = Math.random() * 1.5 + 0.6 + 'em';
                 heart.style.opacity = Math.random() * 0.7 + 0.3;
                 document.body.appendChild(heart);
                 setTimeout(() => {
@@ -140,7 +140,7 @@
                 }, 5000);
             }
         }
-        setInterval(createHeart, 150); // Menyeimbangkan jumlah love agar tidak berlebihan
+        setInterval(createHeart, 200); 
     </script>
 </body>
 </html>
